@@ -1,4 +1,3 @@
-import React from 'react'
 import { Repository } from '../../__generated__/types'
 import styles from './RepositoryListItem.module.scss'
 import { Link } from 'react-router-dom'

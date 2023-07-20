@@ -1,11 +1,10 @@
-import React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { Repository, useGetRepoByIdQuery } from '../../__generated__/types'
 import { getFormattedDate } from '../../common/utils'
 import s from './RepositoryPage.module.scss'
 import { RepoStar } from '../../shared/RepoStar/RepoStar'
 import { AgainButton } from '../../shared/AgainButton'
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 
 export const RepositoryPage = () => {
   const params = useParams()
@@ -14,7 +13,7 @@ export const RepositoryPage = () => {
   })
 
   if (error) return <AgainButton refetch={refetch} message={error.message} />
-  if (loading) return 'loading...'
+  if (loading) return <>loading...</>
 
   const repo = data?.node as Repository
   repo

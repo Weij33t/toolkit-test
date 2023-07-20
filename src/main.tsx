@@ -7,6 +7,10 @@ import { relayStylePagination } from '@apollo/client/utilities'
 import { BrowserRouter } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css'
 
+const apiAuth =
+  import.meta.env.VITE_AUTHORIZATION ??
+  prompt('Введите АПИ-ключ вместе со словом bearer')
+
 const client = new ApolloClient({
   uri: import.meta.env.VITE_BASE_URL,
   cache: new InMemoryCache({
@@ -19,8 +23,7 @@ const client = new ApolloClient({
     },
   }),
   headers: {
-    Authorization:
-      'bearer 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',
+    Authorization: apiAuth,
     'X-Github-Next-Global-ID': '1',
   },
 })

@@ -1,4 +1,3 @@
-import React from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -9,10 +8,14 @@ export interface AgainButtonProps {
 
 export const AgainButton = ({ message, refetch }: AgainButtonProps) => {
   toast(message, { type: 'error' })
+  const onClick = () => {
+    refetch()
+    window.location.reload()
+  }
   return (
     <>
       {message}
-      <button onClick={() => refetch()}>Попробовать снова</button>
+      <button onClick={onClick}>Попробовать снова</button>
       <ToastContainer />
     </>
   )

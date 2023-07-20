@@ -1,30 +1,30 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import classnames from 'classnames'
-import {
-  GetRepositoryDocument,
-  useGetRepositoryQuery,
-} from '../../__generated__/types'
+import { GetRepositoryDocument } from '../../__generated__/types'
 import { generatePageNumbers, getCursorByPageNumber } from '../../common/utils'
 import { QueryParams } from '../../common/types'
 import { useSearchParams } from 'react-router-dom'
 
 import s from './Paginator.module.scss'
+import { DocumentNode, useQuery } from '@apollo/client'
 
-export const Paginator = () => {
+export interface PaginatorProps {
+  query: DocumentNode
+  totalPages: number
+}
+
+export const Paginator = ({ totalPages, query }: PaginatorProps) => {
   const [params, setParams] = useSearchParams()
   const [currentPage, setCurrentPage] = useState(
     +(params.get(QueryParams.page) ?? 1)
   )
-  const { refetch, data, client } = useGetRepositoryQuery({
+  const { refetch, client } = useQuery(query, {
     variables: {
       query: params.get(QueryParams.query),
       after: getCursorByPageNumber(+(params.get(QueryParams.page) ?? 1)),
     },
   })
-  const pages = generatePageNumbers(data?.search.repositoryCount ?? 0).slice(
-    0,
-    10
-  )
+  const pages = generatePageNumbers(totalPages).slice(0, 10)
 
   const setPage = async (number: number) => {
     if (number === currentPage) return
