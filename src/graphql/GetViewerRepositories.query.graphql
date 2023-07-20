@@ -1,0 +1,26 @@
+query GetViewerRepositories($after: String = null) {
+  viewer {
+    repositories(
+      affiliations: [OWNER, ORGANIZATION_MEMBER, COLLABORATOR]
+      after: $after
+      first: 10
+    ) {
+      nodes {
+        ... on Repository {
+          id
+          name
+          stargazerCount
+          url
+          updatedAt
+        }
+      }
+      totalCount
+      pageInfo {
+        startCursor
+        endCursor
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+  }
+}

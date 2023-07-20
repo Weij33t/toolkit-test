@@ -1,0 +1,47 @@
+.repoCard {
+  display: grid;
+  grid-template-areas: 'header header' 'repoOwnerAvatar repoDesc';
+  gap: 15px;
+}
+
+.repoCardHeader {
+  grid-area: header;
+  border-bottom: 1px solid #646cff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 35px;
+  span {
+    align-self: start;
+  }
+}
+
+.repoName {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.repoOwnerAvatar {
+  grid-area: repoOwnerAvatar;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 15px;
+  img {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.repoOwnerLogin {
+  align-self: flex-start;
+  font-size: 25px;
+}
+
+.repoDesc {
+  grid-area: repoDesc;
+}
+
+.back {
+  font-size: 18px;
+}

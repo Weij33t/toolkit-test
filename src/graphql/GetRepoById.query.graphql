@@ -1,0 +1,24 @@
+query GetRepoById($id: ID!) {
+  node(id: $id) {
+    ... on Repository {
+      id
+      nameWithOwner
+      name
+      stargazerCount
+      updatedAt
+      languages(first: 10) {
+        nodes {
+          id
+          name
+          color
+        }
+      }
+      shortDescriptionHTML
+      owner {
+        avatarUrl
+        url
+        login
+      }
+    }
+  }
+}

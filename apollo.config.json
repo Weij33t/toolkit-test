@@ -1,0 +1,10 @@
+{
+  "client": {
+    "service": {
+      "name": "githubapi",
+      "localSchemaFile": "./schema.json",
+      "includes": ["src/**/*.{graphql,ts,js}"],
+      "excludes": ["**/node_modules/**"]
+    }
+  }
+}

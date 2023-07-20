@@ -1,0 +1,32 @@
+.RepoCard {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 15px 20px;
+  width: 50vw;
+  display: grid;
+  grid-template-columns: 7fr 1fr;
+  grid-template-areas:
+    'name star'
+    'url .'
+    'date .';
+  gap: 10px;
+  cursor: pointer;
+  text-align: left;
+  &:hover {
+    box-shadow: 1px 1px 1px 1px #fff;
+  }
+}
+
+.RepoName {
+  grid-area: name;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.RepoUrl {
+  grid-area: url;
+}
+
+.RepoLastDate {
+  grid-area: date;
+}
